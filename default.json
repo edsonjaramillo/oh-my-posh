@@ -49,7 +49,7 @@
                     "properties": {
                         "branch_max_length": 25,
                         "fetch_status": true
-                    },
+                    }
                 },
                 {
                     "background": "#00897b",
