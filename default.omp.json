@@ -29,7 +29,7 @@
                         "style": "full"
                     },
                     "style": "diamond",
-                    "template": "{{ .Path }} "
+                    "template": " {{ .Path }} "
                 },
                 {
                     "type": "git",
