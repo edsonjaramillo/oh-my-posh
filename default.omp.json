@@ -4,21 +4,35 @@
     "version": 2,
     "blocks": [
         {
+            "type": "prompt",
             "alignment": "left",
             "segments": [
                 {
-                    "background": "#3b82f6",
+                    "type": "session",
+                    "style": "diamond",
+                    "background": "#f59e0b",
                     "foreground": "#000000",
                     "leading_diamond": "\ue0b6",
                     "trailing_diamond": "\uE0B0",
                     "properties": {
                         "style": "full"
                     },
-                    "style": "diamond",
-                    "template": "{{ .Path }} ",
-                    "type": "path"
+                    "template": "{{ if eq .UserName \"\" }}{{ .HostName }}{{ else }}{{ .UserName }}{{ end }}"
                 },
                 {
+                    "type": "path",
+                    "background": "#3b82f6",
+                    "foreground": "#000000",
+                    "leading_diamond": "<transparent,background>\uE0B0</>",
+                    "trailing_diamond": "\uE0B0",
+                    "properties": {
+                        "style": "full"
+                    },
+                    "style": "diamond",
+                    "template": "{{ .Path }} "
+                },
+                {
+                    "type": "git",
                     "background": "#22c55e",
                     "background_templates": [
                         "{{ if or (.Working.Changed) (.Staging.Changed) }}#FFC600{{ end }}",
@@ -34,11 +48,9 @@
                         "fetch_status": true
                     },
                     "style": "diamond",
-                    "template": " {{ .HEAD }}{{ if .Staging.Changed }}<#FF6F00> \uf046 {{ .Staging.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
-                    "type": "git"
+                    "template": " {{ .HEAD }}{{ if .Staging.Changed }}<#FF6F00> \uf046 {{ .Staging.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} "
                 }
-            ],
-            "type": "prompt"
+            ]
         }
     ]
 }
